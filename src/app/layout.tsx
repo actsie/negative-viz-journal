@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ToastProvider } from '@/components/ui/toast'
 import { PinProvider } from '@/lib/pin-context'
+import PawgrammerBanner from '@/components/pawgrammer-banner'
+import DemoBanner from '@/components/demo-banner'
+import VideoNudge from '@/components/VideoNudge'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -26,9 +29,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <PawgrammerBanner />
         <PinProvider>
           <ToastProvider>
-            {children}
+            <div className="min-h-screen">
+              <DemoBanner />
+              {children}
+            </div>
+            <VideoNudge />
           </ToastProvider>
         </PinProvider>
       </body>
