@@ -83,11 +83,11 @@ export default function VideoNudge({
   // Show below banner on banner hover, hide 2 seconds after hover ends
   useEffect(() => {
     console.log('Hover effect triggered:', { bannerHovered, videoWidgetHovered, showBelowBanner, isAnimatingDown });
-    let timer: NodeJS.Timeout;
+    let timer: NodeJS.Timeout | undefined;
 
     if (bannerHovered || videoWidgetHovered) {
       // Clear any existing timer
-      clearTimeout(timer);
+      if (timer) clearTimeout(timer);
       console.log('Setting video widget to show');
       setShowBelowBanner(true);
 
